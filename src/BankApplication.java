@@ -4,26 +4,27 @@ public class BankApplication{
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-MenuApplication();
+       MenuApplication();
     }
 public static void MenuApplication(){
-     int choice=1;
-     choice=scanner.nextInt();
-     scanner.nextLine();
+    int choice=1;
      while(choice!=0){
          System.out.println("\n ----Menu Application-----");
          System.out.println("1. Manage Client ");
          System.out.println("2. Manage Account ");
          System.out.println("3. Manage Operations ");
          System.out.println("0. Exit");
-         System.out.println("Enter your choice");
+         System.out.print("Enter your choice :");
+         choice=scanner.nextInt();
+         scanner.nextLine();
+
          switch(choice){
              case 1: MenuClient();
              break;
-             case 2: MenuAccount();
+             /*case 2: MenuAccount();
              break;
              case 3: MenuOperation();
-             break;
+             break;*/
              case 0:
                  System.out.println("Goodbye!");
                  return;
@@ -35,8 +36,7 @@ public static void MenuApplication(){
 }
 public static void MenuClient(){
         int choice=1;
-        choice=scanner.nextInt();
-        scanner.nextLine();
+
         while(choice!=0){
             System.out.println("\n ----Menu Client-----");
             System.out.println("1. Add Client ");
@@ -44,7 +44,9 @@ public static void MenuClient(){
             System.out.println("3. Update  Client ");
             System.out.println("4. Delete Client ");
             System.out.println("0. Exit");
-            System.out.print("Enter your choice: ");
+            System.out.print("Enter your choice : ");
+            choice=scanner.nextInt();
+            scanner.nextLine();
             switch(choice){
                 case 1:Client.addClient();
                 break;
@@ -62,8 +64,8 @@ public static void MenuClient(){
 
             }
         }
-}
-public static void MenuAccount(){
+}}
+/*public static void MenuAccount(){
         int choice=1;
         choice=scanner.nextInt();
         scanner.nextLine();
@@ -124,4 +126,4 @@ public static void MenuAccount(){
             }
         }
  }
-}
+}*/
