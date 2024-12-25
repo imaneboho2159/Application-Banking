@@ -4,13 +4,13 @@ import java.util.regex.Pattern;
 
 public class Client {
     private int id;
-    private String  firstName;
-    private String  lastName;
-    private String  email;
-    private String  phoneNumber;
-    private String  address;
-    static Scanner scanner=new Scanner(System.in);
-    static ArrayList<Client> client=new ArrayList<Client>();
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
+    private String address;
+    static Scanner scanner = new Scanner(System.in);
+    static ArrayList<Client> client = new ArrayList<Client>();
 
     public Client(int id, String firstName, String lastName, String email, String phoneNumber, String address) {
         this.id = id;
@@ -80,20 +80,27 @@ public class Client {
         return Pattern.matches(regex, email);
     }
 
-    public static void addClient (){
-        boolean valid=false;
+    public static void addClient() {
+        boolean valid = false;
 
         System.out.print("Enter Client ID: ");
-        int id=scanner.nextInt();
+        int id = scanner.nextInt();
         scanner.nextLine();
+        for(Client c : client) {
+            if(c.getId() == id) {
+                System.out.println("This Id is already in use! ");
+                return;
+            }
+        }
         System.out.print("Enter Client First Name: ");
-        String firstName=scanner.next();
+        String firstName = scanner.next();
         scanner.nextLine();
         System.out.print("Enter Client Last Name: ");
-        String lastName=scanner.next();
+        String lastName = scanner.next();
         scanner.nextLine();
-        String phoneNumber=null,email=null;
-        while(!valid) {
+
+        String phoneNumber = null, email = null;
+        while (!valid) {
             System.out.print("Enter Client Email: ");
             email = scanner.next();
             scanner.nextLine();
@@ -103,7 +110,7 @@ public class Client {
             valid = isValidEmail(email) && isValidPhoneNumber(phoneNumber);
         }
         System.out.print("Enter Client Address: ");
-        String address=scanner.next();
+        String address = scanner.next();
         scanner.nextLine();
 
         try {
@@ -113,15 +120,74 @@ public class Client {
             System.out.println("Error: " + e.getMessage());
         }
     }
-    public static void displayClient(){
-        if(client.isEmpty()) {
+
+    public static void displayClient() {
+        if (client.isEmpty()) {
             System.out.println("No client found");
         }
         System.out.println(" ------list of Clients -----");
-        for(Client c:client) {
+        for (Client c : client) {
             System.out.println(c);
         }
     }
+
+    public static void updateClient() {
+        boolean valid = false;
+        System.out.print("Enter Client ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        for (Client c : client) {
+            if (c.getId() == id) {
+                System.out.print("1-Update Name \n" + "2-Update email " + "3-Update Phone number \n" + "4-Update Address \n" + "        Enter your choice     ");
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter Client new First Name: ");
+                        c.setFirstName(scanner.nextLine());
+                        System.out.print("Enter Client new Last Name: ");
+                        c.setLastName(scanner.nextLine());
+                        break;
+
+                    case 2:
+                        while (!valid) {
+                            System.out.print("Enter Client new Email: ");
+                            c.setEmail(scanner.nextLine());
+                            valid = isValidEmail(c.email);
+                        }
+                        break;
+
+                    case 3:
+                        while (!valid) {
+                            System.out.print("Enter Client new Phone Number: ");
+                            c.setPhoneNumber(scanner.nextLine());
+                            valid = isValidPhoneNumber(c.phoneNumber);
+                        }
+                        break;
+                    case 4:
+                        System.out.print("Enter Client new Address: ");
+                        c.setAddress(scanner.nextLine());
+                        break;
+                    default:
+                        System.out.println("Invalid choice");
+                }
+            }
+
+        }
+    }
+
+    public static void deleteClient() {
+        System.out.print("Enter student ID to delete: ");
+        int id = scanner.nextInt();
+        for (Client c : client) {
+            if (c.getId() == id) {
+                client.remove(c);
+                break;
+            }
+        }
+        System.out.print("\n Student not found ! ");
+    }
+
 
     @Override
     public String toString() {
