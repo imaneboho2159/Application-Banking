@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Client {
-    private int id;
+    private  int id;
     private String firstName;
     private String lastName;
     private String email;
@@ -113,21 +113,17 @@ public class Client {
         String address = scanner.next();
         scanner.nextLine();
 
-        try {
-            Client client = new Client(id, firstName, lastName, email, phoneNumber, address);
-            System.out.println("Client added successfully: " + client);
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        client.add( new Client(id, firstName, lastName, email, phoneNumber, address));
+
+
+
     }
 
     public static void displayClient() {
-        if (client.isEmpty()) {
-            System.out.println("No client found");
-        }
         System.out.println(" ------list of Clients -----");
         for (Client c : client) {
             System.out.println(c);
+            client.toString();
         }
     }
 
@@ -138,7 +134,7 @@ public class Client {
         scanner.nextLine();
         for (Client c : client) {
             if (c.getId() == id) {
-                System.out.print("1-Update Name \n" + "2-Update email " + "3-Update Phone number \n" + "4-Update Address \n" + "        Enter your choice     ");
+                System.out.print("1-Update Name \n" + "2-Update email " + "3-Update Phone number \n" + "4-Update Address \n" + "   Enter your choice     ");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
                 switch (choice) {
