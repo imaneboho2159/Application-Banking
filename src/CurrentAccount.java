@@ -76,14 +76,14 @@ public class CurrentAccount extends Account {
 
     }
 
-    public static void displayCurrentAccount() {
+    public void displayCurrentAccount() {
         System.out.println(" ------list of Current Accounts ------ -----");
         for (CurrentAccount ca : currentAccount) {
             System.out.println("CurrentAccount" +
                     "\naccountNumber=" + getAccountNumber() +
                     "\n balance=" + getInitialBalance() +
                     "\n bankCharges=" + bankCharges +
-                    "\n client=" + Client.client.getFirst().getFirstName() +" " + Client.client.getLast().getLastName() + " (ID: " + Client.client.getFirst().getId() );
+                    "\n client=" + Client.client.getFirst().getFirstName() +" " + Client.client.getLast().getLastName() + " ID: " + Client.client.getFirst().getId() );
         }
     }
 
