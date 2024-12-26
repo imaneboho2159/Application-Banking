@@ -21,10 +21,10 @@ public static void MenuApplication(){
          switch(choice){
              case 1: MenuClient();
              break;
-             /*case 2: MenuAccount();
+             case 2: Account. MenuAccount();
              break;
-             case 3: MenuOperation();
-             break;*/
+             case 3: //MenuOperation();
+             break;
              case 0:
                  System.out.println("Goodbye!");
                  return;
@@ -65,37 +65,8 @@ public static void MenuClient(){
             }
         }
 }}
-/*public static void MenuAccount(){
-        int choice=1;
-        choice=scanner.nextInt();
-        scanner.nextLine();
-        while(choice!=0){
-            System.out.println("\n ----Menu Account-----");
-            System.out.println("1. Add Account ");
-            System.out.println("2. Display Account ");
-            System.out.println("3. Update  Account ");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice");
 
-        switch(choice){
-            case 1: Account.addAccount();
-            break;
-            case 2: Account.displayAccount();
-            break;
-            case 3: Account.updateAccount();
-            break;
-            case 4: Account.deleteAcconte();
-            break;
-            case 0:
-                System.out.println("Goodbye!");
-                return;
-                default:
-                    System.out.println("Invalid choice");
-
-        }
-        }
-}
- public static void MenuOperation(){
+ /*public static void MenuOperation(){
         int choice=1;
         choice=scanner.nextInt();
         scanner.nextLine();
@@ -125,5 +96,4 @@ public static void MenuClient(){
 
             }
         }
- }
-}*/
+ }*/
