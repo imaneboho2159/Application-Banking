@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,6 +20,7 @@ public class SavingAccount extends Account {
     public SavingAccount() {
 
     }
+
 
 
     public  void MenuSavingAccount() {
@@ -58,7 +60,7 @@ public class SavingAccount extends Account {
                 return;
             }
         }
-        SavingAccount newAccount = new SavingAccount(accountNumber, initialBalance, GetDate(),clients);
+        SavingAccount newAccount = new SavingAccount(accountNumber, initialBalance, GetSDate(),clients);
         savingAccount.add(newAccount);
 
         System.out.println("Current account has been created successfully for client: " + Client.client.getFirst().getFirstName() + " " + Client.client.getFirst().getLastName());
@@ -69,11 +71,11 @@ public class SavingAccount extends Account {
             System.out.println(
                     "\naccountNumber:" + sa.getAccountNumber() +
                             "\n balance :" + getInitialBalance() +
-                            "\n Creation date :" + GetDate() +
+                            "\n Creation date :" + GetSDate() +
                             "\n Client : " + Client.client.getFirst().getFirstName() +" \n" + Client.client.getLast().getLastName() + " \nID: " + Client.client.getFirst().getId() + "\n"+ Client.client.getFirst().getEmail() +"\n"+Client.client.getFirst().getPhoneNumber()+"\n"+Client.client.getFirst().getAddress() );
         }
     }
-    public   LocalDate GetDate(){
+    public  static LocalDate GetSDate(){
         LocalDate CreationDate = LocalDate.now();
 
         return  CreationDate;

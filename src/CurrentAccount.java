@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CurrentAccount extends Account {
-    static int  bankCharges = 100;
+    static int bankCharges = 100;
     private Client clients;
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<CurrentAccount> currentAccount = new ArrayList<>();
 
-     public CurrentAccount(long accountNumber, double initialBalance, LocalDate creationDate, Client clients) {
+    public CurrentAccount(long accountNumber, double initialBalance, LocalDate creationDate, Client clients) {
         super(accountNumber, initialBalance, creationDate, clients);
         this.clients = clients;
     }
@@ -22,7 +22,7 @@ public class CurrentAccount extends Account {
         super();
     }
 
-    public int  getBankCharges() {
+    public int getBankCharges() {
         return bankCharges;
     }
 
@@ -52,18 +52,9 @@ public class CurrentAccount extends Account {
         }
 
     }
-    public void calculateActualBalance(int id) {
-        LocalDate NowDate = GetDate();
-        long DayBetwen= ChronoUnit.MONTHS.between(NowDate,currentAccount.get(id).GetDate());
-        if (DayBetwen == 0 || DayBetwen > 12) {
-           currentAccount.get(id).setInitialBalance(currentAccount.get(id).getInitialBalance()-100);
-        }
-        else {
-            System.out.println(" the account still did not reach the condition of one year! ");
-        }
-    }
 
-      void addCurrentAccount() {
+
+    void addCurrentAccount() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -84,7 +75,7 @@ public class CurrentAccount extends Account {
                 return;
             }
         }
-        CurrentAccount newAccount = new CurrentAccount(accountNumber, initialBalance, GetDate(),clients);
+        CurrentAccount newAccount = new CurrentAccount(accountNumber, initialBalance, GetDate(), clients);
         currentAccount.add(newAccount);
 
         System.out.println("Current account has been created successfully for client: " + Client.client.getFirst().getFirstName() + " " + Client.client.getFirst().getLastName());
@@ -97,16 +88,15 @@ public class CurrentAccount extends Account {
         for (CurrentAccount ca : currentAccount) {
             System.out.println(
                     "\naccountNumber:" + ca.getAccountNumber() +
-                    "\n balance :" + ca.getInitialBalance() +
-                    "\n Creation date :" + GetDate() +
-                    "\n Client : " + Client.client.getFirst().getFirstName() +" \n" + Client.client.getLast().getLastName() + " \nID: " + Client.client.getFirst().getId() + "\n"+ Client.client.getFirst().getEmail() +"\n"+Client.client.getFirst().getPhoneNumber()+"\n"+Client.client.getFirst().getAddress() );
+                            "\n balance :" + ca.getInitialBalance() +
+                            "\n Creation date :" + GetDate() +
+                            "\n Client : " + Client.client.getFirst().getFirstName() + "  " + Client.client.getLast().getLastName() + " \nID: " + Client.client.getFirst().getId() + "\n" + Client.client.getFirst().getEmail() + "\n" + Client.client.getFirst().getPhoneNumber() + "\n" + Client.client.getFirst().getAddress());
         }
     }
 
-    public   LocalDate GetDate(){
+    public static LocalDate GetDate() {
         LocalDate CreationDate = LocalDate.now();
 
-     return  CreationDate;
+        return CreationDate;
     }
 }
-
